@@ -1,0 +1,170 @@
+:root {
+    --neon-pink: #ff007f;
+    --neon-cyan: #00ffff;
+    --bg-dark: #0a0a1a;
+    --text-glow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior: none;
+    touch-action: none;
+}
+
+#game-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#score-container {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--neon-cyan);
+    text-shadow: var(--text-glow);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.screen-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    background: rgba(10, 10, 26, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.panel {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 15px var(--neon-pink), inset 0 0 15px rgba(255, 0, 127, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px;
+}
+
+.panel h1 {
+    color: var(--neon-cyan);
+    text-shadow: var(--text-glow);
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.panel p {
+    font-size: 18px;
+    color: #ddd;
+}
+
+.glow-btn {
+    background: transparent;
+    border: 2px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    text-shadow: var(--text-glow);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.glow-btn:active {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Fallback Touch Controls - hidden on desktop via JS or CSS */
+#touch-controls {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: none; /* Show only on touch devices if needed, but swipe is primary */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Enable pointer events on buttons */
+.control-row {
+    display: flex;
+    gap: 60px;
+    pointer-events: auto;
+}
+
+.touch-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 0, 127, 0.2);
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+    opacity: 0.6;
+}
+
+.touch-btn:active {
+    background: rgba(255, 0, 127, 0.6);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    #touch-controls {
+        display: flex; /* Visible on mobile */
+    }
+
+    #score-container {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Runner 3D</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="game-container"></div>
+
+    <div id="hud">
+        <div id="score-container">
+            <div>SCORE: <span id="score">0</span></div>
+            <div>HIGH SCORE: <span id="high-score">0</span></div>
+        </div>
+    </div>
+
+    <div id="ui-layer" class="screen-center">
+        <div id="start-screen" class="panel">
+            <h1>NEON RUNNER</h1>
+            <p>Swipe or use arrow keys to move & jump</p>
+            <button id="start-btn" class="glow-btn">START GAME</button>
+        </div>
+
+        <div id="game-over-screen" class="panel hidden">
+            <h1>SYSTEM FAILURE</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-btn" class="glow-btn">REBOOT SYSTEM</button>
+        </div>
+    </div>
+
+    <div id="touch-controls">
+        <div class="control-row">
+            <button id="btn-up" class="touch-btn">▲</button>
+        </div>
+        <div class="control-row">
+            <button id="btn-left" class="touch-btn">◀</button>
+            <button id="btn-right" class="touch-btn">▶</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
